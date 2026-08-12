@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SkyTales — JWST Sky Simulator</title>
+<link rel="stylesheet" href="css/style.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+</head>
+<body>
+  <header id="topbar">
+    <h1>✨ SkyTales</h1>
+    <span class="subtitle">JWST-inspired sky simulation · live MAST data</span>
+    <span id="api-status" class="status-pill">checking API…</span>
+  </header>
+
+  <main>
+    <section id="sky-panel">
+      <div id="sky-map"></div>
+      <div id="sky-controls">
+        <label>Stars: <span id="star-count">0</span></label>
+        <button id="reload-stars">Reload Sky Map</button>
+      </div>
+      <div id="star-info" class="card hidden"></div>
+    </section>
+
+    <section id="side-panel">
+      <div class="card">
+        <h2>Target Search</h2>
+        <input id="target-input" placeholder="e.g. TOI-700, Kepler-10, TRAPPIST-1" />
+        <select id="mission-select">
+          <option value="TESS">TESS</option>
+          <option value="Kepler">Kepler</option>
+          <option value="JWST">JWST</option>
+        </select>
+        <button id="fetch-lc-btn">Fetch Light Curve</button>
+        <label class="checkbox-row"><input type="checkbox" id="synthetic-toggle" /> Use synthetic demo curve</label>
+      </div>
+
+      <div class="card">
+        <h2>Light Curve</h2>
+        <div id="lightcurve-plot"></div>
+      </div>
+
+      <div class="card">
+        <h2>Transit Detection</h2>
+        <button id="run-transit-btn">Run LSTM + Autoencoder</button>
+        <div id="transit-result" class="result-box"></div>
+      </div>
+
+      <div class="card">
+        <h2>Transient Filter</h2>
+        <button id="run-transient-btn">Run Rules + LLM Filter</button>
+        <div id="transient-result" class="result-box"></div>
+      </div>
+
+      <div class="card">
+        <h2>Sky View by Location</h2>
+        <p class="hint">Enter any location on Earth, or use your current position.</p>
+        <input id="lat-input" type="number" step="0.0001" placeholder="Latitude e.g. 23.8103" />
+        <input id="lon-input" type="number" step="0.0001" placeholder="Longitude e.g. 90.4125" />
+        <button id="use-location-btn">📍 Use My Location</button>
+        <button id="show-sky-btn">Show Sky</button>
+        <div id="sky-view-plot"></div>
+        <div id="sky-detail-panel" class="sky-detail-card hidden"></div>
+      </div>
+
+      <div class="card">
+        <h2>Star Classification</h2>
+        <p class="hint">Click a star in the sky map to classify it (CNN, 6 spectral types).</p>
+        <div id="classify-result" class="result-box"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/starmap.js"></script>
+  <script src="js/lightcurve.js"></script>
+  <script src="js/skyview.js"></script>
+</body>
+</html>

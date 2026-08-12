@@ -1,0 +1,203 @@
+:root {
+  --bg: #05070f;
+  --panel: #0d1224;
+  --accent: #7fdbff;
+  --accent2: #ff6ad5;
+  --text: #e8ecf7;
+  --muted: #8a92b2;
+  --border: #1e2440;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: radial-gradient(ellipse at top, #0d1330 0%, #05070f 60%);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+#topbar {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+#topbar h1 {
+  margin: 0;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 24px;
+}
+
+.subtitle { color: var(--muted); font-size: 13px; }
+
+.status-pill {
+  margin-left: auto;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  font-size: 12px;
+}
+.status-pill.ok { color: #6ef29a; border-color: #6ef29a55; }
+.status-pill.err { color: #ff7f7f; border-color: #ff7f7f55; }
+
+main {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 16px;
+  padding: 16px 24px;
+}
+
+#sky-panel { position: relative; }
+
+#sky-map {
+  width: 100%;
+  height: 560px;
+  background: #000;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+#sky-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+#side-panel { display: flex; flex-direction: column; gap: 14px; }
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.card h2 { margin: 0 0 10px; font-size: 15px; color: var(--accent); }
+
+input, select {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  background: #0a0e1e;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+}
+
+button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 13px;
+}
+button:hover { background: var(--accent); color: #05070f; }
+
+.checkbox-row { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 12px; }
+.checkbox-row input { width: auto; margin: 0; }
+
+.hint { color: var(--muted); font-size: 12px; margin: 0 0 8px; }
+
+.result-box {
+  font-size: 12px;
+  color: var(--muted);
+  background: #0a0e1e;
+  border-radius: 8px;
+  padding: 8px 10px;
+  min-height: 20px;
+  white-space: pre-wrap;
+}
+
+.hidden { display: none; }
+
+#star-info {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 220px;
+  font-size: 12px;
+}
+
+#lightcurve-plot { width: 100%; height: 260px; }
+#sky-view-plot { width: 100%; height: 360px; }
+
+.sky-detail-card {
+  margin-top: 10px;
+  padding: 14px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0a0e1e 0%, #10152c 100%);
+  border: 1px solid var(--border);
+}
+
+.sky-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.star-swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 12px 3px currentColor;
+  animation: twinkle 1.6s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(0.88); }
+}
+
+.sky-detail-title { font-size: 15px; font-weight: 600; color: var(--text); }
+.sky-detail-subtitle { font-size: 11px; color: var(--muted); }
+
+.meter-row { margin: 8px 0; font-size: 11px; color: var(--muted); }
+.meter-track {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #1e2440;
+  overflow: hidden;
+  margin-top: 3px;
+}
+.meter-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+
+.sky-detail-fact {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--text);
+  line-height: 1.5;
+  font-style: italic;
+  border-left: 2px solid var(--accent);
+  padding-left: 8px;
+}
+
+.constellation-star-chip {
+  display: inline-block;
+  padding: 2px 8px;
+  margin: 2px 3px 0 0;
+  border-radius: 999px;
+  background: #10152c;
+  border: 1px solid var(--border);
+  font-size: 10px;
+  color: var(--accent);
+}

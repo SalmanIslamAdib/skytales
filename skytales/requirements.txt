@@ -1,0 +1,9 @@
+flask==3.0.3
+flask-cors==4.0.1
+numpy==1.26.4
+pandas==2.2.2
+tensorflow==2.16.1
+astroquery==0.4.7
+lightkurve==2.4.2
+astropy==6.1.4
+anthropic==0.34.2
