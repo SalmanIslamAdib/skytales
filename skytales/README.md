@@ -1,5 +1,5 @@
 # SkyTales 🔭✨
-
+[![DOI](https://zenodo.org/badge/1331848859.svg)](https://doi.org/10.5281/zenodo.21984165)
 A JWST-inspired sky simulation: a real 3D star map built from live MAST/Vizier
 data, ML-based star classification and transit detection, and an LLM-assisted
 transient filter — served by a Flask API and rendered in a Three.js + Plotly
@@ -17,6 +17,9 @@ frontend.
 | API Health Check      | ✅     | `GET /api/health`                                    |
 | Live Server Ready     | ✅     | Flask + `flask-cors`, CORS enabled                   |
 | Sky View by Location  | ✅     | Enter/detect lat+lon → real visible stars & constellations |
+
+
+
 
 ## Project layout
 
