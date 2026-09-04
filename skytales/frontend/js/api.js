@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://skytales-3r27.onrender.com";
 
 async function apiGet(path) {
   const res = await fetch(`${API_BASE}${path}`);
